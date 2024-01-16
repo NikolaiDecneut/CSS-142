@@ -1,0 +1,44 @@
+/**
+ * Write a description of class MarioBoardB here.
+ *
+ * @Nikolai Decneut
+ * @1.0(Jan 16)
+ */
+import java.util.Scanner;
+
+public class CustomMarioBoard {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("What does Mario look like? ");
+        String mario = scanner.nextLine();
+
+        System.out.print("What does a Coin look like? ");
+        String coin = scanner.nextLine();
+        System.out.println("Here is your level.");
+        printLevel(mario, coin);
+    }
+
+    private static void printSegment(String coin, int segmentType) {
+        for (int i = 0; i < 5; i++) {
+            if (segmentType == 2 && (i == 1 || i == 4)) {
+                System.out.println("||    |?" + (i == 4 ? coin : "") + "|");
+            } else {
+                System.out.println("||" + (segmentType == 3 && i >= 2 ? coin : ""));
+            }
+        }
+        System.out.println();
+    }
+
+    private static void printLevel(String mario, String coin) {
+        printSegment(coin, 1);
+        printSegment(coin, 2);
+        printSegment(coin, 2);
+        printSegment(coin, 1);
+        printSegment(coin, 3);
+        System.out.println("||||||||||||" + mario);
+        System.out.println("||");
+        System.out.println("||              ^");
+        System.out.println("|----------------");
+    }
+}
